@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VANLECIA Pakistan | Premium Women's Footwear</title>
+    <meta name="description" content="Shop VANLECIA Pakistan premium women's heels, flats, wedges, slippers and mules. Cash on delivery available across Pakistan.">
+    <meta name="keywords" content="VANLECIA Pakistan, women shoes Pakistan, ladies footwear, heels, flats, wedges, slippers, mules">
+    <meta name="theme-color" content="#111111">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; margin: 0; background: #fff; color: #171717; }
+        .font-serif { font-family: 'Playfair Display', serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+        .product-card { transition: transform .25s ease, box-shadow .25s ease; }
+        .product-card:hover { transform: translateY(-4px); }
+        .product-image { transition: transform .45s ease; }
+        .product-card:hover .product-image { transform: scale(1.04); }
+        .modal { animation: fadeIn .2s ease; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .drawer { transition: transform .3s ease; }
+        .admin-scroll::-webkit-scrollbar { width: 5px; }
+        .admin-scroll::-webkit-scrollbar-thumb { background: #999; border-radius: 20px; }
+        .toast { animation: toastIn .25s ease; }
+        @keyframes toastIn { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        .fade-slide { animation: fadeInSlide 0.8s ease-in-out; }
+        @keyframes fadeInSlide { from { opacity: 0; transform: scale(1.02); } to { opacity: 1; transform: scale(1); } }
+    </style>
+</head>
+<body class="bg-white text-neutral-900">
+
+<!-- ANNOUNCEMENT -->
+<div class="bg-neutral-950 text-white text-center py-2 px-3 text-[10px] sm:text-xs tracking-[0.15em] uppercase font-semibold">
+    FREE NATIONWIDE SHIPPING ACROSS PAKISTAN ON ORDERS ABOVE PKR 5,000 | COD AVAILABLE
+</div>
+
+<!-- HEADER -->
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-neutral-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+        <a href="#home" class="font-serif text-xl sm:text-3xl font-bold tracking-[0.18em]">VANLECIA</a>
+        <nav class="hidden md:flex items-center gap-7 text-xs font-semibold uppercase tracking-wider">
+            <a href="#home" class="hover:text-neutral-500 transition">Home</a>
+            <a href="#collection" class="hover:text-neutral-500 transition">Shop</a>
+            <a href="#collection" onclick="filterCategory('Heels')" class="hover:text-neutral-500 transition">Heels</a>
+            <a href="#collection" onclick="filterCategory('Flats')" class="hover:text-neutral-500 transition">Flats</a>
+            <a href="#collection" onclick="filterCategory('Wedges')" class="hover:text-neutral-500 transition">Wedges</a>
+        </nav>
+        <div class="flex items-center gap-2 sm:gap-4">
+            <button onclick="focusSearch()" aria-label="Search products" class="p-2 hover:bg-neutral-100 rounded-full">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.8" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+            </button>
+            <button onclick="openCartDrawer()" aria-label="Shopping cart" class="relative p-2 hover:bg-neutral-100 rounded-full">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-width="1.8" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                <span id="cartCount" class="absolute -top-1 -right-1 bg-black text-white text-[9px] w-4 h-4 rounded-full flex items-center justify-center font-bold">0</span>
+            </button>
+            <button onclick="openAdmin()" class="hidden sm:block bg-black text-white text-[10px] font-bold tracking-wider px-4 py-2.5 rounded-full hover:bg-neutral-800">ADMIN</button>
+        </div>
+    </div>
+</header>
+
+<!-- HERO DYNAMIC SLIDESHOW SECTION -->
+<section id="home" class="relative bg-neutral-100 overflow-hidden">
+    <div id="heroSlideshowContainer" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Slideshow rendered dynamically -->
+    </div>
+    <div class="absolute bottom-4 left-0 right-0 flex justify-center gap-2 z-20" id="heroDots"></div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="py-6 border-b border-neutral-100 bg-neutral-50">
+    <div class="max-w-7xl mx-auto px-4">
+        <div class="flex gap-5 sm:gap-8 overflow-x-auto no-scrollbar">
+            <button onclick="filterCategory('')" class="flex-shrink-0 text-center group">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-white shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=200&q=80" alt="All styles" class="w-full h-full object-cover group-hover:scale-110 transition">
+                </div>
+                <span class="block text-[10px] sm:text-xs font-semibold mt-2">All Styles</span>
+            </button>
+            <button onclick="filterCategory('Heels')" class="flex-shrink-0 text-center group">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-white shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=200&q=80" alt="Heels" class="w-full h-full object-cover group-hover:scale-110 transition">
+                </div>
+                <span class="block text-[10px] sm:text-xs font-semibold mt-2">Heels</span>
+            </button>
+            <button onclick="filterCategory('Flats')" class="flex-shrink-0 text-center group">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-white shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=200&q=80" alt="Flats" class="w-full h-full object-cover group-hover:scale-110 transition">
+                </div>
+                <span class="block text-[10px] sm:text-xs font-semibold mt-2">Flats</span>
+            </button>
+            <button onclick="filterCategory('Wedges')" class="flex-shrink-0 text-center group">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-white shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1535043934128-cf0b28d52f95?auto=format&fit=crop&w=200&q=80" alt="Wedges" class="w-full h-full object-cover group-hover:scale-110 transition">
+                </div>
+                <span class="block text-[10px] sm:text-xs font-semibold mt-2">Wedges</span>
+            </button>
+            <button onclick="filterCategory('Slippers')" class="flex-shrink-0 text-center group">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-white shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1560769629-975ec94e6a86?auto=format&fit=crop&w=200&q=80" alt="Slippers" class="w-full h-full object-cover group-hover:scale-110 transition">
+                </div>
+                <span class="block text-[10px] sm:text-xs font-semibold mt-2">Slippers</span>
+            </button>
+            <button onclick="filterCategory('Mules')" class="flex-shrink-0 text-center group">
+                <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full overflow-hidden border-2 border-white shadow-sm">
+                    <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=200&q=80" alt="Mules" class="w-full h-full object-cover group-hover:scale-110 transition">
+                </div>
+                <span class="block text-[10px] sm:text-xs font-semibold mt-2">Mules</span>
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- COLLECTION -->
+<section id="collection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
+        <div>
+            <p class="text-xs uppercase tracking-[0.25em] text-neutral-500 font-bold">Our Collection</p>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold mt-1">Shop Footwear</h2>
+        </div>
+        <div class="flex flex-wrap gap-2">
+            <input id="search" type="search" placeholder="Search shoes..." oninput="renderProducts()" class="w-44 sm:w-56 border border-neutral-200 rounded-full px-4 py-2.5 text-xs outline-none focus:border-black">
+            <select id="filter" onchange="renderProducts()" class="border border-neutral-200 rounded-full px-4 py-2.5 text-xs outline-none bg-white">
+                <option value="">All Categories</option>
+                <option value="Heels">Heels</option>
+                <option value="Flats">Flats</option>
+                <option value="Wedges">Wedges</option>
+                <option value="Slippers">Slippers</option>
+                <option value="Mules">Mules</option>
+            </select>
+            <select id="sort" onchange="renderProducts()" class="border border-neutral-200 rounded-full px-4 py-2.5 text-xs outline-none bg-white">
+                <option value="default">Sort</option>
+                <option value="low">Price: Low to High</option>
+                <option value="high">Price: High to Low</option>
+                <option value="name">Name</option>
+            </select>
+        </div>
+    </div>
+    <div class="flex justify-between items-center mb-6">
+        <p class="text-xs text-neutral-500"><span id="productCount">0</span> products</p>
+        <button onclick="clearFilters()" class="text-xs font-semibold underline">Clear Filters</button>
+    </div>
+    <div id="productGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-3 sm:gap-x-6 gap-y-10"></div>
+    <div id="emptyProducts" class="hidden text-center py-20">
+        <p class="font-serif text-2xl font-bold">No products found</p>
+        <p class="text-sm text-neutral-500 mt-2">Try another search or category.</p>
+    </div>
+</section>
+
+<!-- TRUST SECTION -->
+<section class="border-y border-neutral-100 bg-neutral-50">
+    <div class="max-w-7xl mx-auto px-4 py-10 grid grid-cols-2 lg:grid-cols-4 gap-8">
+        <div class="text-center">
+            <div class="text-xl mb-2">🚚</div>
+            <h3 class="text-xs font-bold uppercase tracking-wider">Nationwide Delivery</h3>
+            <p class="text-[11px] text-neutral-500 mt-1">Across Pakistan</p>
+        </div>
+        <div class="text-center">
+            <div class="text-xl mb-2">💵</div>
+            <h3 class="text-xs font-bold uppercase tracking-wider">Cash on Delivery</h3>
+            <p class="text-[11px] text-neutral-500 mt-1">Easy & convenient</p>
+        </div>
+        <div class="text-center">
+            <div class="text-xl mb-2">↩️</div>
+            <h3 class="text-xs font-bold uppercase tracking-wider">Easy Exchange</h3>
+            <p class="text-[11px] text-neutral-500 mt-1">Customer friendly</p>
+        </div>
+        <div class="text-center">
+            <div class="text-xl mb-2">💬</div>
+            <h3 class="text-xs font-bold uppercase tracking-wider">WhatsApp Support</h3>
+            <p class="text-[11px] text-neutral-500 mt-1">Quick assistance</p>
+        </div>
+    </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="bg-neutral-950 text-white py-14">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+        <p class="text-[10px] uppercase tracking-[0.3em] text-neutral-400 font-bold">Stay Updated</p>
+        <h2 class="font-serif text-3xl sm:text-4xl font-bold mt-3">Don't Miss New Drops</h2>
+        <p class="text-xs text-neutral-400 mt-3">Sign up for exclusive collections and special offers.</p>
+        <form onsubmit="subscribeEmail(event)" class="flex max-w-md mx-auto mt-7 border border-neutral-700">
+            <input id="newsletterEmail" type="email" required placeholder="Your email address" class="flex-1 min-w-0 bg-transparent px-4 py-3 text-xs outline-none">
+            <button type="submit" class="px-5 bg-white text-black text-xs font-bold hover:bg-neutral-200">JOIN</button>
+        </form>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-neutral-950 text-white px-4 py-12">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+            <div>
+                <h2 class="font-serif text-2xl font-bold tracking-widest">VANLECIA</h2>
+                <p class="text-xs text-neutral-400 leading-6 mt-4 max-w-xs">Premium ladies footwear crafted for elegance, comfort and confidence across Pakistan.</p>
+            </div>
+            <div>
+                <h3 class="text-xs font-bold uppercase tracking-wider mb-4">Shop</h3>
+                <div class="space-y-3 text-xs text-neutral-400">
+                    <a href="#collection" class="block hover:text-white">All Products</a>
+                    <a href="#collection" onclick="filterCategory('Heels')" class="block hover:text-white">Heels</a>
+                    <a href="#collection" onclick="filterCategory('Flats')" class="block hover:text-white">Flats</a>
+                    <a href="#collection" onclick="filterCategory('Wedges')" class="block hover:text-white">Wedges</a>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-xs font-bold uppercase tracking-wider mb-4">Customer Care</h3>
+                <div class="space-y-3 text-xs text-neutral-400">
+                    <button onclick="showInfo('Size Chart')" class="block hover:text-white">Size Chart</button>
+                    <button onclick="showInfo('Exchange & Return')" class="block hover:text-white">Exchange & Return</button>
+                    <button onclick="openWhatsApp()" class="block hover:text-white">Contact WhatsApp</button>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-xs font-bold uppercase tracking-wider mb-4">Connect</h3>
+                <p class="text-xs text-neutral-400 leading-6 mb-4">Experience prompt customer assistance on WhatsApp.</p>
+                <button onclick="openWhatsApp()" class="bg-emerald-600 text-white px-5 py-2.5 rounded-full text-xs font-bold hover:bg-emerald-500 transition">CHAT ON WHATSAPP</button>
+            </div>
+        </div>
+        <div class="border-t border-neutral-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-neutral-500">
+            <p>&copy; 2026 VANLECIA Pakistan. All rights reserved.</p>
+            <div class="flex gap-4 mt-4 sm:mt-0">
+                <button onclick="openAdmin()" class="hover:text-white">Admin Portal</button>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<!-- PRODUCT MODAL -->
+<div id="productModal" class="fixed inset-0 z-50 hidden bg-black/60 items-center justify-center p-4">
+    <div class="bg-white w-full max-w-3xl rounded-2xl overflow-hidden relative modal max-h-[90vh] overflow-y-auto">
+        <button onclick="closeProductModal()" class="absolute top-4 right-4 w-9 h-9 bg-neutral-100 rounded-full flex items-center justify-center text-xs font-bold z-10 hover:bg-neutral-200">✕</button>
+        <div id="productModalContent"></div>
+    </div>
+</div>
+
+<!-- CART DRAWER -->
+<div id="cartDrawer" class="fixed inset-0 z-50 hidden bg-black/50 flex justify-end">
+    <div id="cartDrawerContent" class="w-full max-w-md bg-white h-full flex flex-col transform translate-x-full drawer shadow-2xl">
+        <div class="p-5 border-b flex items-center justify-between">
+            <h3 class="font-serif text-lg font-bold">Shopping Cart</h3>
+            <button onclick="closeCartDrawer()" class="p-2 hover:bg-neutral-100 rounded-full">✕</button>
+        </div>
+        <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-5 admin-scroll"></div>
+        <div class="p-5 border-t bg-neutral-50">
+            <div class="flex justify-between text-xs font-bold mb-3">
+                <span>Subtotal:</span>
+                <span id="cartSubtotal">Rs. 0</span>
+            </div>
+            <button onclick="openCheckoutModal()" class="w-full bg-black text-white py-3.5 rounded-xl text-xs font-bold tracking-wider hover:bg-neutral-800">PROCEED TO CHECKOUT</button>
+            <button onclick="clearCart()" class="w-full text-center text-xs text-neutral-500 underline mt-3">Clear Cart</button>
+        </div>
+    </div>
+</div>
+
+<!-- CHECKOUT MODAL -->
+<div id="checkoutModal" class="fixed inset-0 z-50 hidden bg-black/60 items-center justify-center p-4">
+    <div class="bg-white w-full max-w-lg rounded-2xl overflow-hidden relative modal p-6 sm:p-8 max-h-[90vh] overflow-y-auto">
+        <div class="flex justify-between items-center mb-6">
+            <h3 class="font-serif text-2xl font-bold">Checkout (COD)</h3>
+            <button onclick="closeCheckoutModal()" class="w-8 h-8 bg-neutral-100 rounded-full flex items-center justify-center text-xs font-bold">✕</button>
+        </div>
+        <form onsubmit="submitCheckout(event)" class="space-y-4">
+            <div>
+                <label class="block text-xs font-bold mb-1">Full Name</label>
+                <input type="text" id="checkoutName" required class="w-full border border-neutral-300 rounded-lg px-3 py-2 text-xs outline-none focus:border-black" placeholder="Ayesha Khan">
+            </div>
+            <div>
+                <label class="block text-xs font-bold mb-1">Phone Number (WhatsApp)</label>
+                <input type="tel" id="checkoutPhone" required class="w-full border border-neutral-300 rounded-lg px-3 py-2 text-xs outline-none focus:border-black" placeholder="03001234567">
+            </div>
+            <div>
+                <label class="block text-xs font-bold mb-1">Delivery Address & City</label>
+                <textarea id="checkoutAddress" required rows="3" class="w-full border border-neutral-300 rounded-lg px-3 py-2 text-xs outline-none focus:border-black" placeholder="House 123, Street 4, Lahore"></textarea>
+            </div>
+            <div class="bg-neutral-50 p-3 rounded-lg text-xs space-y-1">
+                <div class="flex justify-between font-bold"><span>Payment Method:</span> <span>Cash on Delivery (COD)</span></div>
+                <div class="flex justify-between font-bold text-sm pt-2 border-t"><span>Total Payable:</span> <span id="checkoutTotalAmount">Rs. 0</span></div>
+            </div>
+            <button type="submit" class="w-full bg-black text-white py-3.5 rounded-xl text-xs font-bold tracking-wider hover:bg-neutral-800">CONFIRM ORDER VIA WHATSAPP</button>
+        </form>
+    </div>
+</div>
+
+<!-- ADMIN MODAL -->
+<div id="adminModal" class="fixed inset-0 z-50 hidden bg-black/60 items-center justify-center p-4">
+    <div class="bg-white w-full max-w-4xl rounded-2xl overflow-hidden relative modal max-h-[90vh] flex flex-col">
+        <div class="p-5 border-b flex items-center justify-between bg-neutral-900 text-white">
+            <h3 class="font-serif text-xl font-bold">VANLECIA Admin Portal</h3>
+            <button onclick="closeAdmin()" class="p-2 hover:bg-neutral-800 rounded-full">✕</button>
+        </div>
+        <div id="adminContent" class="p-6 overflow-y-auto admin-scroll flex-1"></div>
+    </div>
+</div>
+
+<!-- INFO MODAL -->
+<div id="infoModal" class="fixed inset-0 z-
